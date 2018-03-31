@@ -100,7 +100,7 @@ fi;
 if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.mergedtbs)" == 1 ]; then
     ui_print " ";
     ui_print "Merging DTBS...";
-    dtbs=/tmp/anykernel/dtbbs
+    dtbs=/tmp/anykernel/dtbs
     currdir=$(pwd)
     cd /tmp/anykernel
     for i in zImage zImage-dtb Image.gz Image Image-dtb Image.gz-dtb Image.bz2 Image.bz2-dtb Image.lzo Image.lzo-dtb Image.lzma Image.lzma-dtb Image.xz Image.xz-dtb Image.lz4 Image.lz4-dtb Image.fit; do
