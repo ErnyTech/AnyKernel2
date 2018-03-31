@@ -497,6 +497,20 @@ patch_cmdline() {
   fi;
 }
 
+# replace_cmdline <new cmdline>
+replace_cmdline() {
+  cmdfile=`ls $split_img/*-cmdline`;
+  echo $1 > $cmdline;
+}
+
+# add_cmdline <new entry/entrys>
+add_cmdline() {
+  cmdfile=`ls $split_img/*-cmdline`;
+  cmdline=`cat $cmdfile`;
+  newcmdline="$cmdline $1";
+  echo $newcmdline > $cmdfile;
+}
+
 # patch_prop <prop file> <prop name> <new prop value>
 patch_prop() {
   if [ -z "$(grep "^$2=" $1)" ]; then
