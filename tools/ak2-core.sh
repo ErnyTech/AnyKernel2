@@ -504,7 +504,7 @@ patch_cmdline() {
   fi;
 }
 
-# add_cmdline <new entry/entrys>
+# add_cmdline <new entry or entries>
 add_cmdline() {
   cmdfile=`ls $split_img/*-cmdline`;
   cmdtmp=`cat $cmdfile`;
