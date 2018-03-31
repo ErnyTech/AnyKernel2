@@ -9,7 +9,7 @@ AnyKernel2 pushes the format even further by allowing kernel developers to modif
 
 ## // Properties / Variables ##
 ```
-kernel.string=KernelName by YourName @ xda-developers
+kernel.string=KernelName by YourName
 do.devicecheck=1
 do.modules=1
 do.cleanup=1
