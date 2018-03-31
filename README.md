@@ -59,7 +59,9 @@ insert_file <file> <if search string> <before|after> <line match string> <patch 
 append_file <file> <if search string> <patch file>
 replace_file <file> <permissions> <patch file>
 patch_fstab <fstab file> <mount match name> <fs match type> <block|mount|fstype|options|flags> <original string> <replacement string>
+replace_cmdline <new cmdline>
 patch_cmdline <cmdline entry name> <replacement string>
+add_cmdline <new entry or entries>
 patch_prop <prop file> <prop name> <new prop value>
 repack_ramdisk
 flash_boot
