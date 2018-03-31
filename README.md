@@ -7,8 +7,6 @@ AnyKernel2 - Flashable Zip Template for Kernel Releases with Ramdisk Modificatio
 
 AnyKernel2 pushes the format even further by allowing kernel developers to modify the underlying ramdisk for kernel feature support easily using a number of included command methods along with properties and variables.
 
-A working script based on DirtyV Kernel for Galaxy Nexus (tuna) is included for reference.
-
 ## // Properties / Variables ##
 ```
 kernel.string=KernelName by YourName @ xda-developers
@@ -16,11 +14,14 @@ do.devicecheck=1
 do.modules=1
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=maguro
-device.name2=toro
-device.name3=toroplus
+do.mergedtbs=0
+device.name1=GenericDevice1
+device.name2=GenericDevice2
+device.name3=GenericDevice3
+device.name4=GenericDevice4
+device.name5=GenericDevice5
 
-block=/dev/block/platform/omap/omap_hsmmc.0/by-name/boot;
+block=/dev/block/bootdevice/by-name/boot; #/dev/block/bootdevice/by-name/boot is a generic kernel image path, it's supports a lot of devices;
 is_slot_device=0;
 ramdisk_compression=auto;
 ```
@@ -32,6 +33,9 @@ __do.modules=1__ will push the contents of the module directory to the same loca
 __do.cleanup=0__ will keep the zip from removing it's working directory in /tmp/anykernel - this can be useful if trying to debug in adb shell whether the patches worked correctly.
 
 __do.cleanuponabort=0__ will keep the zip from removing it's working directory in /tmp/anykernel in case of installation abort.
+
+__do.do.mergedtbs=1__ will merge all dtbs contained in the folder `dtbs` with your Kernel Image and make a new Kernel Image with appended device tree blob to zImage, this requires `CONFIG_ARM_APPENDED_DTB=y` in your Kernel Config.
+This settings is useful because it allows you do not to build always dtbs with Kernel Image
 
 `is_slot_device=1` enables detection of the suffix for the active boot partition on slot-based devices and will add this to the end of the supplied `block=` path. Also accepts `auto` for use with broad, device non-specific zips.
 
