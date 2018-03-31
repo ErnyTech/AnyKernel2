@@ -4,17 +4,16 @@
 ## AnyKernel setup
 # begin properties
 properties() {
-kernel.string=Generic Kernel Name
+kernel.string=ErnyTech Oneplus3/3T Kernel 
 do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
-do.mergedtbs=0
-device.name1=GenericDevice1
-device.name2=GenericDevice2
-device.name3=GenericDevice3
-device.name4=GenericDevice4
-device.name5=GenericDevice5
+do.mergedtbs=1
+device.name1=OnePlus3
+device.name2=oneplus3
+device.name3=OnePlus3T
+device.name4=oneplus3t
 } # end properties
 
 # shell variables
