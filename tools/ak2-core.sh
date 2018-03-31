@@ -484,17 +484,31 @@ patch_fstab() {
   fi;
 }
 
+
+# replace_cmdline <new cmdline>
+replace_cmdline() {
+  cmdfile=`ls $split_img/*-cmdline`;
+  echo $1 > $cmdline;
+}
+
 # patch_cmdline <cmdline entry name> <replacement string>
 patch_cmdline() {
   cmdfile=`ls $split_img/*-cmdline`;
   if [ -z "$(grep "$1" $cmdfile)" ]; then
     cmdtmp=`cat $cmdfile`;
-    echo "$cmdtmp $2" > $cmdfile;
+    replace_cmdline "$cmdtmp $2";
     sed -i -e 's;  *; ;g' -e 's;[ \t]*$;;' $cmdfile;
   else
     match=$(grep -o "$1.*$" $cmdfile | cut -d\  -f1);
     sed -i -e "s;${match};${2};" -e 's;  *; ;g' -e 's;[ \t]*$;;' $cmdfile;
   fi;
+}
+
+# add_cmdline <new entry or entries>
+add_cmdline() {
+  cmdfile=`ls $split_img/*-cmdline`;
+  cmdtmp=`cat $cmdfile`;
+  replace_cmdline "$cmdtmp $1";
 }
 
 # patch_prop <prop file> <prop name> <new prop value>
