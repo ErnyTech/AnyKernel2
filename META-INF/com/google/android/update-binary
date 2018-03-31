@@ -97,6 +97,23 @@ if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.devicecheck)" == 1 ]; then
   fi;
 fi;
 
+if [ "$(file_getprop /tmp/anykernel/anykernel.sh do.mergedtbs)" == 1 ]; then
+    ui_print " ";
+    ui_print "Merging DTBS...";
+    dtbs=/tmp/anykernel/dtbbs
+    currdir=$(pwd)
+    cd /tmp/anykernel
+    for i in zImage zImage-dtb Image.gz Image Image-dtb Image.gz-dtb Image.bz2 Image.bz2-dtb Image.lzo Image.lzo-dtb Image.lzma Image.lzma-dtb Image.xz Image.xz-dtb Image.lz4 Image.lz4-dtb Image.fit; do
+        if [ -f /tmp/anykernel/$i ]; then
+            kernel=/tmp/anykernel/$i;
+            break;
+        fi;
+    done;
+    cd $currdir
+    cat $kernel $dtbs/*.dtb > /tmp/anykernel/zImage
+    rm $kernel
+fi;
+
 ui_print "Installing kernel...";
 for i in $($bb --list); do
   $bb ln -s $bb /tmp/anykernel/bin/$i;

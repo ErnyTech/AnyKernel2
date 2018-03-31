@@ -9,6 +9,7 @@ do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
+do.mergedtbs=0
 device.name1=GenericDevice1
 device.name2=GenericDevice2
 device.name3=GenericDevice3
